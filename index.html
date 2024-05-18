@@ -24,7 +24,7 @@
             padding: 20px;
             border-radius: 10px;
         }
-        .answer-section {
+        .answer-section, .password-section {
             display: none;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
@@ -39,6 +39,20 @@
             max-width: 100%;
             height: auto;
             border-radius: 10px;
+        }
+        .password-input {
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .password-button {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -150,7 +164,13 @@
         <img src="imagesbarrebethel/15.jpeg" alt="Kerk">
     </div>
 
-    <h2 class="show-answers" onclick="document.querySelector('.answer-section').style.display = 'block'; this.style.display = 'none';">Toon antwoorden</h2>
+    <h2 class="show-answers" onclick="document.querySelector('.password-section').style.display = 'block'; this.style.display = 'none';">Toon antwoorden</h2>
+    
+    <div class="password-section">
+        <h2>Voer het wachtwoord in</h2>
+        <input type="password" id="password" class="password-input">
+        <button class="password-button" onclick="checkPassword()">Submit</button>
+    </div>
     
     <div class="answer-section">
         <h2>Antwoorden op de Vragen</h2>
@@ -195,7 +215,7 @@
         </div>
         
         <div class="route-section">
-            <h3>6. Voor welke grote gebeurtenis is het gedenkteken?</h3>
+            <h3>6. Voor welke grote gebeurtenis is het gedenkteken?</h</h3>
             <p>Het gedenkteken herdenkt de Watersnoodramp van 1953.</p>
         </div>
         
@@ -208,10 +228,15 @@
     </div>
 
     <script>
-        document.querySelector('.show-answers').addEventListener('click', function() {
-            document.querySelector('.answer-section').style.display = 'block';
-            this.style.display = 'none';
-        });
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            if (password === "B3th3l") {
+                document.querySelector('.password-section').style.display = 'none';
+                document.querySelector('.answer-section').style.display = 'block';
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
     </script>
 </body>
 </html>
